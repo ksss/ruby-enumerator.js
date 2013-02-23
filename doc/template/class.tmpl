@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset={+IO.encoding+}" />
+	 	{! Link.base = "./"; /* all generated links will be relative to this */ !}
+		<title>{+data.alias+}</title>
+
+		<style type="text/css">
+			{+include("static/default.css")+}
+		</style>
+	</head>
+
+	<body>
+		{+include("static/header.html")+}
+
+		<div id="content">
+			<h1 class="title">
+				{+data.alias+}
+			</h1>
+			<if test="data.version">
+			<p>Version:{+ data.version +}</p>
+			</if>
+
+			<div class="agenda">
+				<h2>Constructor</h2>
+				<div class="attributes">{!
+					if (data.isPrivate) output += "&lt;private&gt; ";
+					if (data.isInner) output += "&lt;inner&gt; ";
+				!}</div>
+				<div class="description">
+					<a href="{+ href(data.alias) +}">{+ data.alias +}</a>{+ makeSignature(data.params) +}
+				</div>
+			<if test="data.properties.length">
+				{! var ownProperties = data.properties.filter(function($){return $.memberOf == data.alias && !$.isNamespace && !$.isStatic }); !}
+				<if test="ownProperties.length">
+					<h2>Properties</h2>
+					<for each="member" in="ownProperties">
+						<p class="agenda-member">
+						<code>
+							{!
+								if (member.isPrivate) output += "&lt;private&gt; ";
+								if (member.isInner) output += "&lt;inner&gt; ";
+								if (member.isStatic) output += "&lt;static&gt; ";
+								if (member.isConstant) output += "&lt;constant&gt; ";
+							!}
+							<a href="{+ href(member.alias) +}">{+ member.alias +}</a>
+						</code>
+						</p>
+					</for>
+				</if>
+			</if>
+
+			<if test="data.methods.length">
+				{! var ownInstanceMethods = data.methods.filter(function($){return $.memberOf == data.alias  && !$.isNamespace && !$.isStatic}); !}
+				<if test="ownInstanceMethods.length">
+					<h2>Instance Methods</h2>
+					<for each="member" in="ownInstanceMethods">
+						<p class="agenda-member">
+						<code>
+							{!
+								if (member.isPrivate) output += "&lt;private&gt; ";
+								if (member.isInner) output += "&lt;inner&gt; ";
+								if (member.isStatic) output += "&lt;static&gt; ";
+							!}
+							<a href="{+ href(member.alias) +}">{+ member.name +}</a>{+makeSignature(member.params)+}
+						</code>
+						</p>
+					</for>
+				</if>
+			</if>
+		</div>
+
+			<if test="data.methods.length">
+				{! var ownMethods = data.methods.filter(function($){return $.memberOf == data.alias  && !$.isNamespace && $.isStatic}); !}
+				<if test="ownMethods.length">
+					<h2>Static Methods</h2>
+					<for each="member" in="ownMethods">
+						<p class="agenda-member">
+							<code>{!
+								if (member.isPrivate) output += "&lt;private&gt; ";
+								if (member.isInner) output += "&lt;inner&gt; ";
+							!}
+							<a href="{+ href(member.alias) +}">{+ member.name +}</a>{+makeSignature(member.params)+}
+							</code>
+						</p>
+					</for>
+					</tbody>
+				</table>
+				</if>
+			</if>
+
+			<div class="details">
+			<section id="{+ data.alias +}">
+			{! var sections = []; !}
+			<if test="!data.isBuiltin() && (data.isNamespace || data.is('CONSTRUCTOR'))">
+				{! sections.push('constructor') !}
+			</if>
+			<if test="defined(ownProperties) && ownProperties.length">
+				{! sections.push('ownProperties') !}
+			</if>
+			<if test="defined(ownInstanceMethods) && ownInstanceMethods.length">
+				{! sections.push('ownInstanceMethods') !}
+			</if>
+			<if test="defined(ownMethods) && ownMethods.length">
+				{! sections.push('ownMethods') !}
+			</if>
+			<for each="section" in="sections">
+				<h2>
+				{!
+					var members = [];
+					switch (section) {
+					case 'constructor':
+						output += 'Constructor';
+						members = [data];
+						break;
+					case 'ownProperties':
+						output += 'Properties';
+						members = ownProperties;
+						break;
+					case 'ownInstanceMethods':
+						output += 'Instance Methods';
+						members = ownInstanceMethods;
+						break;
+					case 'ownMethods':
+						output += 'Static Methods';
+						members = ownMethods;
+						break;
+					}
+				!}
+				</h2>
+				<for each="member" in="members">
+				<section id="{+ member.alias +}" class="section">
+					<if test="member.comment.getTag('call_see').length">
+						<div class="call_see">
+							<for each="call_see" in="member.comment.getTag('call_see')">
+								<pre class="call_see">{+ indent + call_see+}</pre>
+							</for>
+						</div>
+					</if>
+					<if test="!member.comment.getTag('call_see').length">
+						<code>
+							{!
+								if (member.isPrivate) output += "&lt;private&gt; ";
+								if (member.isInner) output += "&lt;inner&gt; ";
+							!}
+							{+ member.name.replace(/\^\d+$/, '')+}
+							<if test="section !== 'ownProperties'">{+ makeSignature(member.params)+}</if>
+							<if test="member.type"> -> {+ member.type +}</if>
+						</code>
+					</if>
+					<dd class="content-detail">
+						<p class="description">
+							{+resolveLinks(member.desc)+}
+							<if test="member.srcFile != data.srcFile">
+								<br />
+								<i>Defined in: </i> {+new Link().toSrc(member.srcFile)+}.
+							</if>
+							<if test="member.author"><br /><i>Author: </i>{+member.author+}.</if>
+						</p>
+						<dl>
+							<if test="member.params.length">
+								<for each="item" in="member.params">
+									<dt class="member-param">
+										<if test="item.isOptional">
+											<span class="name">[PARAM] {+ '[' + item.name +}</span><if test="item.defaultValue"> = {+item.defaultValue+}</if>]:
+										</if>
+										<if test="!item.isOptional">
+											<span class="name">[PARAM] {+ item.name + ':' +}</span>
+										</if>
+									</dt>
+									<dd>{+resolveLinks(item.desc)+}</dd>
+								</for>
+							</if>
+							<if test="member.example.length">
+								<for each="example" in="member.example">
+									<pre class="code">{+example+}</pre>
+								</for>
+							</if>
+							<if test="member.deprecated">
+								<dl class="detailList">
+								<dt class="heading">Deprecated:</dt>
+								<dt>
+									{+ resolveLinks(member.deprecated) +}
+								</dt>
+								</dl>
+							</if>
+							<if test="member.since">
+								<dl class="detailList">
+								<dt class="heading">Since:</dt>
+									<dd>{+ member.since +}</dd>
+								</dl>
+								</dl>
+							</if>
+							<if test="member.exceptions.length">
+								<dl class="detailList">
+								<for each="item" in="member.exceptions">
+									<dt class="member-param">
+										[EXCEPTION]{+ item.name +}
+										{+ ((item.type) ? item.type : "") +}
+										<if test="item.isOptional">(Optional<if test="item.defaultValue">, Default: {+item.defaultValue+}</if>)</if>
+									:
+									</dt>
+									<dd>{+resolveLinks(item.desc)+}</dd>
+								</for>
+								</dl>
+							</if>
+							<if test="false && member.returns.length">
+								<dl class="detailList">
+								<dt class="heading">Returns:</dt>
+								<for each="item" in="member.returns">
+									<dd>{+ ((item.type) ? item.type : "") +}{+resolveLinks(item.desc)+}</dd>
+								</for>
+								</dl>
+							</if>
+							<if test="member.requires.length">
+								<dl class="detailList">
+								<dt class="heading">Requires:</dt>
+								<for each="item" in="member.requires">
+									<dd>{+ resolveLinks(item) +}</dd>
+								</for>
+								</dl>
+							</if>
+							<if test="member.see.length">
+								<dl class="detailList">
+								<dt class="heading">[SEE_ALSO]</dt>
+								<for each="item" in="member.see">
+									<dd><a href="{+ href(item) +}">{+ item +}</a></dd>
+								</for>
+								</dl>
+							</if>
+						</dl>
+					</dd>
+				</section>
+				</for>
+			</for>
+		</div>
+	</body>
+</html>

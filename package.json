@@ -1,0 +1,17 @@
+{
+  "name": "enumerator",
+  "version": "0.0.1",
+  "description": "can use ruby enumerator methods in javascript.",
+  "main": "enumerator.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "node test-node.js"
+  },
+  "repository": "",
+  "author": "ksss",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "ae57bdf973c4a899d80351efca2e57a12eb45ea8"
+}

@@ -1,0 +1,98 @@
+/* default.css */
+body
+{
+	font-family: Meiryo, "Hiragino Kaku Gothic Pro", "MS Gothic", Osaka, sans-serif;
+	width: 100%;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+.member-param
+{
+	font-weight: bold;
+}
+
+.agenda-member
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.call_see
+{
+	margin: 0 0 10px 0;
+}
+
+pre.call_see
+{
+	display: block;
+	padding: 0px;
+	margin: 0px;
+}
+
+pre.code
+{
+	line-height: 1.1;
+	background-color: #eee;
+	padding: 10px;
+	font-weight: normal;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 50px;
+	width: 80%;
+}
+
+.content-detail
+{
+	margin: 0.3em 0em 1em 4em;
+}
+
+h2
+{
+	font-size:150%;
+	text-align: left;
+	padding-left: 0.5em;
+	margin-top: 1.5em;
+	border-left: 10px solid #33a;
+}
+
+.description
+{
+	line-height: 1.4;
+	padding: 4px;
+	padding-left: 4px;
+}
+

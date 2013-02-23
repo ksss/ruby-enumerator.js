@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<title>test</title>
+<style type="text/css">
+p
+{
+	margin: 0;
+	padding: 0;
+}
+.ok
+{
+	background-color: #4f4;
+}
+.ng
+{
+	background-color: #f22;
+}
+</style>
+<script type="text/javascript" src="./enumerator.js"></script>
+<script type="text/javascript" src="./jquery-1.9.0.js"></script>
+<script type="text/javascript" src="./assert.js"></script>
+<script type="text/javascript" src="./test.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var test = this.test;
+	var ret = [];
+	var res;
+	var error = null;
+	for (var key in test) if (test.hasOwnProperty(key)) {
+		try {
+			res = 'ok';
+			test[key]();
+		} catch (ex) {
+			res = 'ng';
+			error = ex;
+			key += ":<br>" + ex.stack;
+		}
+		ret.push('<p class="' + res + '">' + key + '</p>');
+	}
+	var all_ret = (error === null) ? 'ok' : 'ng';
+	ret.unshift('<h1 class="' + all_ret + '">' + all_ret.toUpperCase() + '</h1>');
+	document.getElementById('content').innerHTML = ret.join('');
+	if (error instanceof Error) {
+		throw error;
+	}
+
+	// DOM each by jQuery
+	var search = /each/;
+	var count = 0;
+	$('p').each(function(i){
+		if (search.test(this.innerHTML)) {
+			count++;
+		}
+	});
+	assert.strictEqual(count, 6);
+
+	// DOM each by Enumerator
+	count = 0;
+	var ps = document.querySelectorAll('p');
+	Enumerator(ps).select(function(i,elem){
+		return search.test(elem.innerHTML);
+	}).each(function(i){
+		count++;
+	});
+	assert.strictEqual(count, 6);
+
+	// Ajax
+	function http (opt) {
+		var req = new XMLHttpRequest();
+		req.open(opt.method, opt.url, true);
+		if (opt.headers) {
+			for (var key in opt.headers) if (opt.headers.hasOwnProperty(key)) {
+				req.setRequestHeader(key, opt.headers[key]);
+			}
+		}
+		req.onreadystatechange = function () {
+			if (req.readyState === 4) opt.success(req); 
+		};
+		req.send(opt.data || null);
+	}
+	Enumerator(function(y){
+		var urls = ['./test.html', './test.html'];
+		var len = urls.length;
+		var i = 0;
+		(function next () {
+			setTimeout(function(){
+				http({method:'get', url:urls[i++], success:y});
+				if (i !== len) next();
+			}, 1000);
+		})();
+	}).each(function(req){
+		var count = Enumerator(req.responseText.split("\n"))
+		.grep(/Enumerator/)
+		.count();
+		assert.ok(count === 5);
+	});
+};
+</script>
+</head>
+<body>
+	<div id="content">
+	</div>
+</body>
+</html>

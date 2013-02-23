@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	 	
+		<title>Enumerator</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font-family: Meiryo, "Hiragino Kaku Gothic Pro", "MS Gothic", Osaka, sans-serif;
+	width: 100%;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+.member-param
+{
+	font-weight: bold;
+}
+
+.agenda-member
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.call_see
+{
+	margin: 0 0 10px 0;
+}
+
+pre.call_see
+{
+	display: block;
+	padding: 0px;
+	margin: 0px;
+}
+
+pre.code
+{
+	line-height: 1.1;
+	background-color: #eee;
+	padding: 10px;
+	font-weight: normal;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 50px;
+	width: 80%;
+}
+
+.content-detail
+{
+	margin: 0.3em 0em 1em 4em;
+}
+
+h2
+{
+	font-size:150%;
+	text-align: left;
+	padding-left: 0.5em;
+	margin-top: 1.5em;
+	border-left: 10px solid #33a;
+}
+
+.description
+{
+	line-height: 1.4;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+</div>
+
+		<div id="content">
+			<h1 class="title">
+				Enumerator
+			</h1>
+			
+
+			<div class="agenda">
+				<h2>Constructor</h2>
+				<div class="attributes"></div>
+				<div class="description">
+					<a href="Enumerator.html#Enumerator">Enumerator</a>(obj, method)
+				</div>
+			
+				
+				
+					<h2>Properties</h2>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#obj">Enumerator#obj</a>
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#method">Enumerator#method</a>
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#index">Enumerator#index</a>
+						</code>
+						</p>
+					
+				
+			
+
+			
+				
+				
+					<h2>Instance Methods</h2>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#initialize">initialize</a>(obj, method)
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#each">each</a>(callback)
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#next">next</a>()
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#next_values">next_values</a>()
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#peek">peek</a>()
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#peek_values">peek_values</a>()
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#rewind">rewind</a>()
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#with_index">with_index</a>(offset, callback)
+						</code>
+						</p>
+					
+						<p class="agenda-member">
+						<code>
+							
+							<a href="Enumerator.html#Enumerator#with_object">with_object</a>(obj, callback)
+						</code>
+						</p>
+					
+				
+			
+		</div>
+
+			
+				
+				
+					<h2>Static Methods</h2>
+					
+						<p class="agenda-member">
+							<code>
+							<a href="Enumerator.html#Enumerator.default_method">default_method</a>(obj)
+							</code>
+						</p>
+					
+						<p class="agenda-member">
+							<code>
+							<a href="Enumerator.html#Enumerator.extend">extend</a>(obj)
+							</code>
+						</p>
+					
+						<p class="agenda-member">
+							<code>
+							<a href="Enumerator.html#Enumerator.raise">raise</a>(name, message)
+							</code>
+						</p>
+					
+						<p class="agenda-member">
+							<code>
+							<a href="Enumerator.html#Enumerator.parallel">parallel</a>(enumerators)
+							</code>
+						</p>
+					
+					</tbody>
+				</table>
+				
+			
+
+			<div class="details">
+			<section id="Enumerator">
+			
+			
+				
+			
+			
+				
+			
+			
+				
+			
+			
+				
+			
+			
+				<h2>
+				Constructor
+				</h2>
+				
+				<section id="Enumerator" class="section">
+					
+						<div class="call_see">
+							
+								<pre class="call_see">  var e = new Enumerator([object,] callback);
+  // or
+  var e = Enumerator([object,] callback);</pre>
+							
+						</div>
+					
+					
+					<dd class="content-detail">
+						<p class="description">
+							Create a Enumerator object.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] obj:</span>
+										
+									</dt>
+									<dd></dd>
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] method:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+			
+				<h2>
+				Properties
+				</h2>
+				
+				<section id="Enumerator#obj" class="section">
+					
+					
+						<code>
+							
+							obj
+							
+							
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Receiver object of Enumerator.
+Can get this.obj any time.
+But should not be change this.
+							
+							
+						</p>
+						<dl>
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#method" class="section">
+					
+					
+						<code>
+							
+							method
+							
+							
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Caller of Enumerator.
+to run this function for each cycle.
+							
+							
+						</p>
+						<dl>
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#index" class="section">
+					
+					
+						<code>
+							
+							index
+							
+							
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Use {`next`,`next_values`,`peek`,`peek_values`} function index.
+							
+							
+						</p>
+						<dl>
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+			
+				<h2>
+				Instance Methods
+				</h2>
+				
+				<section id="Enumerator#initialize" class="section">
+					
+					
+						<code>
+							
+							initialize
+							(obj, method)
+							 -> Enumerator
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Enumerator initializer
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] obj:</span>
+										
+									</dt>
+									<dd>Enumerator receiver object</dd>
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] method:</span>
+										
+									</dt>
+									<dd>execute method when execute `each`. if this is nothing set default method by `obj`</dd>
+								
+							
+							
+								
+									<pre class="code">  var e = Enumerator([1,1,2,2,3]);
+  e.each(function(i){
+    console.log(i); //=> 1,1,2,2,3
+  });</pre>
+								
+									<pre class="code">  Enumerator(function(y){
+      y('first');
+      y('second');
+      y('third');
+  }).each(function(i){
+      console.log(i + ' next'); //=> 'first next', 'second next', 'third next'
+  });</pre>
+								
+									<pre class="code">  var e = Enumerator([1,2,3], Array.prototype.map);
+  var array = e.each(function(i){
+    return i * i;
+  }));
+  // array => [1,4,9]</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#each" class="section">
+					
+						<div class="call_see">
+							
+								<pre class="call_see">  each() -> this
+  each(callback(item)) -> *</pre>
+							
+						</div>
+					
+					
+					<dd class="content-detail">
+						<p class="description">
+							Start run enumerator function.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] callback:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+								
+									<pre class="code">  Enumerator([1,2,3]).each(function(i){
+    console.log(i); //=> 1,2,3
+  });</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#next" class="section">
+					
+					
+						<code>
+							
+							next
+							()
+							 -> *
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Return object from Receiver object at now `index`
+and `index` increment.
+							
+							
+						</p>
+						<dl>
+							
+							
+								
+									<pre class="code">  var e = Enumerator([1,2,3]);
+  e.next(); //=> 1
+  e.next(); //=> 2
+  e.next(); //=> 3
+  e.next(); //=> throw StopIteration</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#next_values" class="section">
+					
+					
+						<code>
+							
+							next_values
+							()
+							 -> Array
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Return Array that object by `next` put in.
+this function judgment to use call yield arguments nothing or undefined.
+							
+							
+						</p>
+						<dl>
+							
+							
+								
+									<pre class="code">  var e = Enumerator(function(y){
+    y();
+    y(undefined);
+    y(null);
+  });
+  e.next_values(); //=> []
+  e.next_values(); //=> [undefined]
+  e.next_values(); //=> [null]</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#peek" class="section">
+					
+					
+						<code>
+							
+							peek
+							()
+							 -> *
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							This is same `next`.
+but not increment `index`.
+							
+							
+						</p>
+						<dl>
+							
+							
+								
+									<pre class="code">  var e = Enumerator([1,2,3]);
+  e.peek(); //=> 1
+  e.peek(); //=> 1
+  e.peek(); //=> 1</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#peek_values" class="section">
+					
+					
+						<code>
+							
+							peek_values
+							()
+							 -> Array
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							This is same `next_values`.
+but not increment `index`.
+							
+							
+						</p>
+						<dl>
+							
+							
+								
+									<pre class="code">  var e = Enumerator(function(y){
+    y();
+    y(undefined);
+    y(null);
+  });
+  e.peek_values(); //=> []
+  e.peek_values(); //=> []
+  e.peek_values(); //=> []</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#rewind" class="section">
+					
+					
+						<code>
+							
+							rewind
+							()
+							 -> Enumerator
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Reset `index`
+if `obj` have rewind function then call it.
+							
+							
+						</p>
+						<dl>
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#with_index" class="section">
+					
+					
+						<code>
+							
+							with_index
+							(offset, callback)
+							 -> Enumerator|*
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Loop with index number.
+index start `offset`(default 0).
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] offset:</span>
+										
+									</dt>
+									<dd></dd>
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] callback:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+								
+									<pre class="code">  var e = Enumerator([1,2,3]).with_index();
+  e.each(function(i, index){
+    console.log([i, index]); //=> [1,0], [2,1], [3,2]
+  });</pre>
+								
+									<pre class="code">  Enumerator([1,2,3]).with_index(10,function(i, index){
+    console.log([i, index]); //=> [1,10], [2,11], [3,12]
+  });</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator#with_object" class="section">
+					
+						<div class="call_see">
+							
+								<pre class="call_see">  with_object(object) -> object
+  each_with_object(object) -> object</pre>
+							
+						</div>
+					
+					
+					<dd class="content-detail">
+						<p class="description">
+							Loop with any object.
+`obj` is cloned and keep value in `with_object` function.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] obj:</span>
+										
+									</dt>
+									<dd></dd>
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] callback:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+								
+									<pre class="code">  var a = [];
+  var e = Enumerator([1,2,3]).with_object(a);
+  e.each(function(i, obj){
+    obj.push(i);
+    console.log([i, obj]); //=> [1,[1]], [2,[1,2]], [3,[1,2,3]]
+  });
+  console.log(a); //=> []</pre>
+								
+									<pre class="code">  Enumerator([1,2,3]).with_object(a,function(i, obj){
+    obj.push(i);
+    console.log([i, obj]); //=> [1,[1]], [2,[1,2]], [3,[1,2,3]]
+  });
+  console.log(a); //=> []</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+			
+				<h2>
+				Static Methods
+				</h2>
+				
+				<section id="Enumerator.default_method" class="section">
+					
+					
+						<code>
+							
+							default_method
+							(obj)
+							 -> function(function(*):*):*
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							if don't set this.method when create Enumerator then
+this function is set.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] obj:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator.extend" class="section">
+					
+					
+						<code>
+							
+							extend
+							(obj)
+							 -> Array
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Extend Enumerator method to other object.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] obj:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+								
+									<pre class="code">  Enumerator.extend(jQuery);
+  //=> jQuery object can use Enumerator methods.</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator.raise" class="section">
+					
+					
+						<code>
+							
+							raise
+							(name, message)
+							
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Throw named error.
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] name:</span>
+										
+									</dt>
+									<dd>error name.</dd>
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] message:</span>
+										
+									</dt>
+									<dd>error message.</dd>
+								
+							
+							
+							
+							
+							
+								<dl class="detailList">
+								
+									<dt class="member-param">
+										[EXCEPTION]
+										*
+										
+									:
+									</dt>
+									<dd>named exception</dd>
+								
+								</dl>
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+				<section id="Enumerator.parallel" class="section">
+					
+					
+						<code>
+							
+							parallel
+							(enumerators)
+							 -> Enumerator
+						</code>
+					
+					<dd class="content-detail">
+						<p class="description">
+							Parallel run enumerator loops
+							
+							
+						</p>
+						<dl>
+							
+								
+									<dt class="member-param">
+										
+										
+											<span class="name">[PARAM] enumerators:</span>
+										
+									</dt>
+									<dd></dd>
+								
+							
+							
+								
+									<pre class="code">  Enumerator.parallel([
+    [1,2,3],             // something object
+    {'a':1,'b':2},       // can use Array or Object
+    Enumerator([4,5,6]), // or Enumerator object
+  ]).each(function(values){
+    console.log(values); //=> [1,['a',1],4], [2,['b',2],5], [3,undefined,6]
+  });</pre>
+								
+							
+							
+							
+							
+							
+							
+							
+						</dl>
+					</dd>
+				</section>
+				
+			
+		</div>
+	</body>
+</html>
