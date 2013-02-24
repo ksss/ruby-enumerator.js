@@ -41,7 +41,7 @@ def nodoc(source)
     .gsub(%r|\n?\s*//.*|, '')
 end
 
-task :default => [:test, :options, :doc]
+task :default => [:test, :options]
 
 task :test => ["test.js"] do |t|
   sh %{node test-node.js}

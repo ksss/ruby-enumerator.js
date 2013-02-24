@@ -1,4 +1,4 @@
-// Rubylike.js (https://github.com/ksss/enumerator.js)
+// Rubylike.js (https://github.com/ksss/ruby-enumerator.js)
 // Copyright (c) 2013 ksss <co000ri@gmail.com>
 function Enumerator (obj, method) {
 	return (this instanceof Enumerator) ? this.initialize.apply(this, arguments) : new Enumerator(obj, method);

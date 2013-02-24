@@ -1,4 +1,4 @@
-// Rubylike.js (https://github.com/ksss/enumerator.js)
+// Rubylike.js (https://github.com/ksss/ruby-enumerator.js)
 // Copyright (c) 2013 ksss <co000ri@gmail.com>
 function Enumerable () {
 };
