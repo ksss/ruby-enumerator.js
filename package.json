@@ -1,6 +1,6 @@
 {
   "name": "ruby-enumerator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "can use ruby enumerator methods in javascript.",
   "main": "enumerator.js",
   "directories": {
