@@ -2,20 +2,10 @@ ruby-enumerator.js
 
 ruby-enumerator is object that usefull to loop.
 
-if you write array loop in javascript. you write it?
-```javascript
-var a = [1,2,3];
-for (var i = 0, len = a.length; i < len; i++) {
-  console.log(i); //=> 1,2,3
-}
+install
 ```
-or
-```javascript
-[1,2,3].forEach(function(i){
-  console.log(i); //=> 1,2,3
-});
+npm install ruby-enumerator
 ```
-
 
 ruby-enumerator.js
 ```javascript
