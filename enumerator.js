@@ -1,7 +1,7 @@
 /**
  * @fileOverview ruby-enumerator.js
  * @author ksss
- * @version 0.0.1
+ * @version 0.0.2
  * @license
  * ruby-enumerator.js Copyright (c) 2013 ksss <co000ri@gmail.com>
  *
