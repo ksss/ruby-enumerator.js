@@ -6,6 +6,7 @@ function Enumerator (obj, method) {
 
 (function(){
 'use strict';
+Enumerator.prototype.obj = undefined;
 Enumerator.prototype.method = undefined;
 Enumerator.prototype.index = undefined;
 Enumerator.prototype.initialize = function (obj, method) {
@@ -160,8 +161,8 @@ Enumerator.extend = function (obj) {
 	var proto = Enumerator.prototype;
 	var extended = [];
 	for (var key in proto) {
-		if (obj[key] === undefined) {
-			obj[key] = proto[key];
+		if (obj.prototype[key] === undefined) {
+			obj.prototype[key] = proto[key];
 			extended.push(key);
 		}
 	}
@@ -207,6 +208,7 @@ Enumerator.parallel = function (enumerators) {
 		}
 	});
 };
+
 function toString (obj) {
 	return {}.toString.call(obj);
 };

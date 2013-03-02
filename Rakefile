@@ -37,8 +37,8 @@ end
 
 def nodoc(source)
   COPYRIGHT + source
+    .gsub(%r|(\n?)\s*//.*\n?|, '\1')
     .gsub(%r|\n?/\*.*?\*/\n?|m, '')
-    .gsub(%r|\n?\s*//.*|, '')
 end
 
 task :default => [:test, :options]

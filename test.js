@@ -209,7 +209,7 @@ this.test = {
 		e.next();
 		assert.deepEqual(e.peek(), null);
 		assert.deepEqual(e.peek_values(), [null]);
-		
+
 		a = [1,2,3]
 		e = Enumerator(a, Array.prototype.forEach);
 		assert.deepEqual(e.peek(), [1,0,a]);
@@ -226,8 +226,8 @@ this.test = {
 		assert.ok(e.next() === 1);
 		assert.deepEqual(e_hash.next(), ["a",1]);
 		assert.deepEqual(e_hash.next(), ["b",2]);
-		assert.deepEqual(e_hash_2.next(), ["a",1]); 
-		assert.deepEqual(e_hash_2.next(), ["b",2]); 
+		assert.deepEqual(e_hash_2.next(), ["a",1]);
+		assert.deepEqual(e_hash_2.next(), ["b",2]);
 		assert.ok(e.next() === 1);
 		assert.ok(e.rewind() === e);
 		assert.ok(e_hash.rewind() === e_hash);
@@ -555,7 +555,7 @@ this.test = {
 		assert.strictEqual(ret, 1);
 	},
 	test_cycle: function () {
-		var tmp = []; 
+		var tmp = [];
 		var e = Enumerator(function(y){
 			y(10); y(16); y(30);
 		});
@@ -564,25 +564,25 @@ this.test = {
 		}) === null);
 		assert.deepEqual(tmp, [10,16,30,10,16,30,10,16,30]);
 
-		tmp = []; 
+		tmp = [];
 		assert.ok(e.cycle(3).each(function(i){
 			tmp.push(i);
 		}) === null);
 		assert.deepEqual(tmp, [10,16,30,10,16,30,10,16,30]);
 
-		tmp = []; 
+		tmp = [];
 		e_hash.cycle(2).each(function(i){
 			tmp.push(i);
 		});
 		assert.deepEqual(tmp, [['a',1],['b',2],['c',3],['a',1],['b',2],['c',3]]);
 
-		tmp = []; 
+		tmp = [];
 		e_hash.cycle(2).each(function(k,v){
 			tmp.push([k,v]);
 		});
 		assert.deepEqual(tmp, [['a',1],['b',2],['c',3],['a',1],['b',2],['c',3]]);
 
-		tmp = []; 
+		tmp = [];
 		e_hash_2.cycle(2).each(function(k,v){
 			tmp.push([k,v]);
 		});
@@ -627,7 +627,7 @@ this.test = {
 		assert.deepEqual(ret.to_a(), [['c',3]]);
 	},
 	test_each_cons: function () {
-		var tmp = []; 
+		var tmp = [];
 		var e = Enumerator(function(y){
 			y(10); y(16); y(30);
 		});
@@ -661,7 +661,7 @@ this.test = {
 		assert.deepEqual(tmp, [[['a',1],['b',2]],[['b',2],['c',3]]]);
 	},
 	test_each_slice: function () {
-		var tmp = []; 
+		var tmp = [];
 		var e = Enumerator(function(y){
 			y(10); y(16); y(30);
 		});
@@ -701,7 +701,7 @@ this.test = {
 		});
 	},
 	test_each_with_index: function () {
-		var tmp = []; 
+		var tmp = [];
 		var e = Enumerator(function(y){
 			y(10); y(16); y(30);
 		});
@@ -922,7 +922,7 @@ this.test = {
 		assert.strictEqual(e.max(function(a,b){ return b - a }), -3);
 		assert.strictEqual(Enumerator({}).max(), null);
 		assert.throws(function(){ Enumerator([1,'2']).max() });
-		
+
 		e = Enumerator({'a':{},'b':2,'c':1});
 		assert.deepEqual(e.max(), ['c',1]);
 

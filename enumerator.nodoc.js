@@ -8,6 +8,7 @@ function Enumerator (obj, method) {
 
 (function(){
 'use strict';
+Enumerable.prototype.all = function (callback) {
 	var self = this;
 	try {
 		if (typeof callback === 'function') {
@@ -1091,6 +1092,7 @@ Enumerable.include = function (obj) {
 };
 
 Enumerable.include(Enumerator);
+
 Enumerator.prototype.obj = undefined;
 Enumerator.prototype.method = undefined;
 Enumerator.prototype.index = undefined;
@@ -1246,8 +1248,8 @@ Enumerator.extend = function (obj) {
 	var proto = Enumerator.prototype;
 	var extended = [];
 	for (var key in proto) {
-		if (obj[key] === undefined) {
-			obj[key] = proto[key];
+		if (obj.prototype[key] === undefined) {
+			obj.prototype[key] = proto[key];
 			extended.push(key);
 		}
 	}
@@ -1293,6 +1295,7 @@ Enumerator.parallel = function (enumerators) {
 		}
 	});
 };
+
 function toString (obj) {
 	return {}.toString.call(obj);
 };

@@ -1,7 +1,7 @@
 /**
  * @fileOverview ruby-enumerator.js
  * @author ksss
- * @version 0.0.3
+ * @version 0.0.4
  * @license
  * ruby-enumerator.js Copyright (c) 2013 ksss <co000ri@gmail.com>
  *
@@ -58,6 +58,7 @@ function Enumerator (obj, method) {
 'use strict';
 
 // {{{ Enumerable
+
 /**
  * @lends Enumerable
  */
@@ -2212,8 +2213,8 @@ Enumerator.extend = function (obj) {
 	var proto = Enumerator.prototype;
 	var extended = [];
 	for (var key in proto) {
-		if (obj[key] === undefined) {
-			obj[key] = proto[key];
+		if (obj.prototype[key] === undefined) {
+			obj.prototype[key] = proto[key];
 			extended.push(key);
 		}
 	}
@@ -2284,6 +2285,8 @@ Enumerator.parallel = function (enumerators) {
 		}
 	});
 };
+
+// }}}
 
 // @private
 function toString (obj) {

@@ -22,7 +22,7 @@ p
 <script src="./jquery-1.9.0.js"></script>
 <script>
 window.onload = function(){
-	Enumerator.extend(jQuery.fn);
+	Enumerator.extend(jQuery);
 	var a = $('script');
 	var test = (function(){
 		return {
@@ -61,18 +61,18 @@ window.onload = function(){
 			test_all: function () {
 				assert.ok(a.all(function(i, elem){
 					assert.strictEqual(this, elem);
-					return /text\/javascript/.test(this.type);
+					return elem.tagName === 'SCRIPT';
 				}) === true);
 			},
 			test_any: function () {
 				assert.ok(a.any(function(i,elem){
 					assert.strictEqual(this, elem);
-					return /text\/css/.test(this.type);
+					return /foo/.test(elem.src);
 				}) === false);
 
 				assert.ok(a.any(function(i, elem){
 					assert.strictEqual(this, elem);
-					return /text\/javascript/.test(elem.type);
+					return /jquery/.test(elem.src);
 				}) === true);
 			},
 			test_chunk: function () {

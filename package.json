@@ -1,8 +1,9 @@
 {
   "name": "ruby-enumerator",
-  "version": "0.0.3",
-  "description": "can use ruby enumerator methods in javascript.",
+  "version": "0.0.4",
+  "description": "can use ruby Enumerator and Enumerable methods in javascript.",
   "main": "enumerator.js",
+  "homepage": "http://github.com/ksss/ruby-enumerator.js",
   "directories": {
     "doc": "doc"
   },
@@ -13,8 +14,6 @@
     "type": "git",
     "url": "git://github.com/ksss/ruby-enumerator.js.git"
   },
-  "author": "ksss",
-  "license": "MIT",
-  "readmeFilename": "README.md",
-  "gitHead": "ae57bdf973c4a899d80351efca2e57a12eb45ea8"
+  "author": "ksss <co000ri@gmail.com>",
+  "license": "MIT"
 }
