@@ -1,4 +1,4 @@
-// Rubylike.js (https://github.com/ksss/ruby-enumerator.js)
+// ruby-enumerator.js (https://github.com/ksss/ruby-enumerator.js)
 // Copyright (c) 2013 ksss <co000ri@gmail.com>
 function Enumerable(){}function Enumerator(k,a){return this instanceof Enumerator?this.initialize.apply(this,arguments):new Enumerator(k,a)}
 (function(){function k(a){return{}.toString.call(a)}Enumerable.prototype.all=function(a){var c=this;try{if("function"===typeof a)return Enumerator(function(a){var b,e=1<a.length?"apply":"call";c.each(function(c){b=b||arguments.length;if(1<b){if(!a.apply(this,arguments))throw!1;}else if(!a[e](this,c))throw!1;});return!0}).each(a);this.each(function(a){if(!a)throw!1;})}catch(b){if(b instanceof Error)throw b;return b}return!0};Enumerable.prototype.any=function(a){var c=this;try{if("function"===typeof a)return Enumerator(function(a){var b,

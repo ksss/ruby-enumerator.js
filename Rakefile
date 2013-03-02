@@ -5,7 +5,7 @@ require "pathname"
 JSDOC = Pathname.new("~/app/jsdoc-toolkit").expand_path
 
 COPYRIGHT = <<EOS
-// Rubylike.js (https://github.com/ksss/ruby-enumerator.js)
+// ruby-enumerator.js (https://github.com/ksss/ruby-enumerator.js)
 // Copyright (c) 2013 ksss <co000ri@gmail.com>
 EOS
 
