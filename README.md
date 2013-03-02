@@ -98,7 +98,12 @@ Enumerator(function(y){
 
 and extend other object. (need `each` function)
 ```javascript
-Enumerator.extend(jQuery.fn);
+Enumerator.extend(jQuery);
+jQuery('.foo').chunk(function(i){
+  //...
+}).each(function(res,i){
+  //...
+});
 ```
 
 # LICENSE
