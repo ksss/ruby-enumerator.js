@@ -1,7 +1,7 @@
 {
   "name": "ruby-enumerator",
-  "version": "0.0.4",
-  "description": "can use ruby Enumerator and Enumerable methods in javascript.",
+  "version": "0.1.0",
+  "description": "Library can use ruby Enumerator and Enumerable methods in javascript.",
   "main": "enumerator.js",
   "homepage": "http://github.com/ksss/ruby-enumerator.js",
   "directories": {
@@ -14,6 +14,14 @@
     "type": "git",
     "url": "git://github.com/ksss/ruby-enumerator.js.git"
   },
+  "keywords": ["ruby", "enumerator"],
+  "bugs": {
+    "url": "https://github.com/ksss/ruby-enumerator.js/issues",
+    "mail": "co000ri@gmail.com"
+  },
   "author": "ksss <co000ri@gmail.com>",
-  "license": "MIT"
+  "licenses": [{
+    "url": "https://github.com/ksss/ruby-enumerator.js/blob/master/enumerator.js",
+    "type": "MIT"
+  }]
 }

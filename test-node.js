@@ -2,8 +2,9 @@
 
 var global = (function(){ return this })();
 
-global.Enumerator = require('./enumerator.js').Enumerator;
-global.Enumerable = require('./enumerator.js').Enumerable;
+var that = require('./enumerator.js');
+global.Enumerator = that.Enumerator;
+global.Enumerable = that.Enumerable;
 global.assert = require('assert');
 
 var test = require('./test.js').test;

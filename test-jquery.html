@@ -19,7 +19,7 @@ p
 </style>
 <script src="./enumerator.js"></script>
 <script src="./assert.js"></script>
-<script src="./jquery-1.9.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 <script>
 window.onload = function(){
 	Enumerator.extend(jQuery);
@@ -100,7 +100,7 @@ window.onload = function(){
 				assert.ok(a.count(function(i,elem){
 					assert.strictEqual(this, elem);
 					return /enumerator/.test(elem.src);
-				}) === 3);
+				}) === 2);
 			},
 			test_cycle: function () {
 				var count = 0;
@@ -118,7 +118,7 @@ window.onload = function(){
 				assert.deepEqual(a.drop_while(function(i, elem){
 					assert.strictEqual(this, elem);
 					return /enumerator/.test(elem.src);
-				}).to_a(), [[3,a[3]]]);
+				}).to_a(), [[2,a[2]],[3,a[3]]]);
 			},
 			test_each_cons: function () {
 				var index = 0;
@@ -152,7 +152,7 @@ window.onload = function(){
 					assert.strictEqual(this, i[1]);
 					obj.push(/enumerator/.test(i[1].src));
 				});
-				assert.deepEqual(tmp, [true,true,true,false]);
+				assert.deepEqual(tmp, [true,true,false,false]);
 			},
 			test_detect: function () {
 				var items = a.detect(function(i, elem){
@@ -160,7 +160,7 @@ window.onload = function(){
 					assert.strictEqual(this, elem);
 					return !/enumerator/.test(elem.src);
 				});
-				assert.deepEqual(items[1], a[3]);
+				assert.deepEqual(items[1], a[2]);
 			},
 			test_find_index: function () {
 				var index = a.find_index(function(i, elem){
@@ -168,7 +168,7 @@ window.onload = function(){
 					assert.strictEqual(this, elem);
 					return !/enumerator/.test(elem.src);
 				});
-				assert.strictEqual(index, 3);
+				assert.strictEqual(index, 2);
 			},
 			test_flat_map: function () {
 				var ret = a.flat_map(function(i, elem){
@@ -192,9 +192,9 @@ window.onload = function(){
 					['true',[
 						[0,a[0]],
 						[1,a[1]],
-						[2,a[2]]
 					]],
 					['false',[
+						[2,a[2]],
 						[3,a[3]]
 					]]
 				]);
@@ -226,7 +226,7 @@ window.onload = function(){
 					assert.strictEqual(this.tagName, 'SCRIPT');
 					return elem.src.length;
 				});
-				assert.deepEqual(ret, [2,a[2]]);
+				assert.deepEqual(ret, [0,a[0]]);
 			},
 			test_min: function () {
 				var ret = a.min();
@@ -260,7 +260,7 @@ window.onload = function(){
 					assert.strictEqual(this.tagName, 'SCRIPT');
 					return elem.src.length;
 				});
-				assert.deepEqual(ret.to_a(), [[3,a[3]],[2,a[2]]]);
+				assert.deepEqual(ret.to_a(), [[3,a[3]],[0,a[0]]]);
 			},
 			test_none: function () {
 				assert.strictEqual(a.none(), false);
@@ -286,7 +286,7 @@ window.onload = function(){
 					assert.strictEqual(this, elem);
 					return /enumerator/.test(elem.src);
 				});
-				assert.deepEqual(ret.to_a()[0], [3,a[3]]);
+				assert.deepEqual(ret.to_a(), [[2,a[2]],[3,a[3]]]);
 			},
 			test_reverse_each: function () {
 				var tmp = [];
@@ -314,7 +314,7 @@ window.onload = function(){
 					assert.strictEqual(this.tagName, 'SCRIPT');
 					return /enumerator/.test(elem.src);
 				});
-				assert.deepEqual(ret.to_a(), [[0,a[0]],[1,a[1]],[2,a[2]]]);
+				assert.deepEqual(ret.to_a(), [[0,a[0]],[1,a[1]]]);
 			},
 			test_sort_by: function () {
 				var ret = a.sort_by(function(i, elem){
@@ -322,7 +322,7 @@ window.onload = function(){
 					assert.strictEqual(this.tagName, 'SCRIPT');
 					return elem.src.length;
 				});
-				assert.deepEqual(ret.to_a(), [[3,a[3]],[1,a[1]],[0,a[0]],[2,a[2]],]);
+				assert.deepEqual(ret.to_a(), [[3,a[3]],[2,a[2]],[1,a[1]],[0,a[0]]]);
 			},
 			test_take: function () {
 				assert.deepEqual(a.take(2).to_a(), [[0,a[0]],[1,a[1]]]);
@@ -333,7 +333,7 @@ window.onload = function(){
 					assert.strictEqual(this.tagName, 'SCRIPT');
 					return /enumerator/.test(elem.src);
 				});
-				assert.deepEqual(ret.to_a(), [[0,a[0]],[1,a[1]],[2,a[2]]]);
+				assert.deepEqual(ret.to_a(), [[0,a[0]],[1,a[1]]]);
 			},
 			test_to_a: function () {
 				assert.deepEqual(a.to_a(), [[0,a[0]],[1,a[1]],[2,a[2]],[3,a[3]]]);

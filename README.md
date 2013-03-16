@@ -4,9 +4,9 @@ ruby-enumerator.js
 
 [![Build Status](https://travis-ci.org/ksss/ruby-enumerator.js.png?branch=master)](https://travis-ci.org/ksss/ruby-enumerator.js)
 
-ruby-enumerator.js is object can use Ruby(v1.9.3) **Enumerator** and **Enumerable** methods in javascript.
+ruby-enumerator.js is object can use Ruby(v1.9.3) all **Enumerator** and **Enumerable** methods in javascript.
 
-# Usage
+## synopsis
 Code of Ruby Enumerator like this ...
 ```ruby
 e = Enumerator.new([1,3,4,6])
@@ -20,7 +20,6 @@ e.chunk { |i|
 ```
 _ruby-enumerator.js_ can write as Ruby like this code.
 ```javascript
-var Enumerator = require('ruby-enumerator').Enumerator;
 var e = new Enumerator([1,3,4,6]);
 e.chunk(function(i){
   return i % 2 === 0;
@@ -31,7 +30,7 @@ e.chunk(function(i){
 });
 ```
 
-# install
+## installation
 _node_
 ```
 npm install ruby-enumerator
@@ -43,13 +42,10 @@ var Enumerator = require('ruby-enumerator').Enumerator;
 _html_
 ```
 <script src="https://raw.github.com/ksss/ruby-enumerator.js/master/enumerator.js"></script>
-<script>
-var e = Enumerator([1,2,3]);
-</script>
 ```
 
 
-# doc
+## doc
 see [https://github.com/ksss/ruby-enumerator.js/tree/master/doc](https://github.com/ksss/ruby-enumerator.js/tree/master/doc)
 
 and more
@@ -58,7 +54,7 @@ and more
 
 [http://doc.ruby-lang.org/ja/1.9.3/class/Enumerable.html](http://doc.ruby-lang.org/ja/1.9.3/class/Enumerable.html)
 
-# example
+## example
 _array_ is basic use way.
 ```javascript
 var e = Enumerator([1,2,3])
@@ -96,7 +92,24 @@ Enumerator(function(y){
 }).take(10).to_a() //=> [1,1,2,3,5,8,13,21,34,55]
 ```
 
-and extend other object. (need `each` function)
+async each
+```
+var e = new Enumerator(function(y){
+  setTimeout(function(){
+    y(2);
+    setTimeout(function(){
+      y(4);
+    }, 0);
+    y(3);
+  }, 0);
+  y(1);
+});
+e.each(function(i){
+  console.log(i); //=> 1,2,3,4
+});
+```
+
+and can extend other object.
 ```javascript
 Enumerator.extend(jQuery);
 jQuery('.foo').chunk(function(i){
@@ -106,5 +119,6 @@ jQuery('.foo').chunk(function(i){
 });
 ```
 
-# LICENSE
+## LICENSE
 see [https://github.com/ksss/ruby-enumerator.js/blob/master/enumerator.js](https://github.com/ksss/ruby-enumerator.js/blob/master/enumerator.js)
+
